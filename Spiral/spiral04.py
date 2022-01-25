@@ -2,7 +2,7 @@ import turtle
 from turtle import *
 
 turtle.title("Rainbow Spiral")
-speed(15)
+speed(0)
 bgcolor("black")
 r,g,b, = 255, 0, 0
 
@@ -22,3 +22,4 @@ for i in range(255 * 2):
     fd(50+i)
     rt(91)
     pencolor(r,g,b)
+    
