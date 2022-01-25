@@ -14,7 +14,7 @@ t.speed(10)
 turtle.bgcolor("black")
 
 # Espiral
-for x in range(500):
+for x in range(250):
     t.pencolor(colors[x%6]) # Configuração das cores
     t.width(x/100+1) # Configuração de largura
     t.forward(x) # Movendo
@@ -25,7 +25,7 @@ t.speed(10)
 
 turtle.bgcolor("black")
 
-for x in range(500):
+for x in range(250):
     t.pencolor(colors[x%6])
     t.width(x/100+1)
     t.forward(x)
