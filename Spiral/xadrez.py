@@ -1,4 +1,3 @@
-from re import T
 import turtle
 
 s = turtle.Screen()
@@ -26,3 +25,4 @@ if __name__ == "__main__":
             drawSqr()
             t.end_fill()
         t.hideturtle()
+t.done()
