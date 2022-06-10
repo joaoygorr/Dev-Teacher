@@ -1,2 +1,0 @@
-# Amazing Spiral in Python
- 
