@@ -5,7 +5,6 @@ import { useNavigation } from "@react-navigation/native";
 import { Image } from "react-native";
 
 // Logo
-import Barber from "../../assets/Barber";
 import TeacherLogo from "../../assets/teacher.png";
 
 export default () => {
@@ -17,7 +16,7 @@ export default () => {
       if (token !== null) {
         // validar o token
       } else {
-        navigation.navigate();
+        navigation.navigate("SignIn");
       }
     };
     checkToken();
@@ -25,8 +24,7 @@ export default () => {
 
   return (
     <Container>
-      {/* <Image source={TeacherLogo} style={{ width: 305, height: 159 }} /> */}
-      <Barber />
+      <Image source={TeacherLogo} style={{ width: "100%", height: 350 }} />
       <LoadingIcon size="large" color="#FFFFFF" />
     </Container>
   );
