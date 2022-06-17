@@ -10,3 +10,10 @@ export const InputArea = styled.View`
   align-items: center;
   margin-bottom: 15px;
 `;
+
+export const Input = styled.TextInput`
+  flex: 1;
+  font-size: 16px;
+  color: #268596;
+  margin-left: 10px;
+`;

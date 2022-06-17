@@ -1,7 +1,12 @@
 import React from "react";
 //components
-import { InputArea } from "./SignInput.style";
+import { InputArea, Input } from "./SignInput.style";
 
-export default () => {
-  return <InputArea></InputArea>;
+export default ({ IconSvg, placeholder }) => {
+  return (
+    <InputArea>
+      <IconSvg />
+      <Input placeholder={placeholder} placeholderTextColor="#268596" />
+    </InputArea>
+  );
 };

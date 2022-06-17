@@ -15,15 +15,19 @@ import SignInput from "../../components/SignInput/SignInput";
 // Image
 import TeacherLogo from "../../assets/teacher.png";
 
+// Icons
+import EmailIcon from "../../assets/Email.js";
+import LockIcon from "../../assets/Lock.js";
+
 export default () => {
   return (
     <Container>
-      <Image source={TeacherLogo} style={{ width: "100%", height: 350 }} />
+      <Image source={TeacherLogo} style={{ width: "50%", height: 180 }} />
 
       <InputArea>
-        <SignInput />
+        <SignInput IconSvg={EmailIcon} placeholder="Enter your email" />
 
-        <SignInput />
+        <SignInput IconSvg={LockIcon} placeholder="Type your password" />
 
         <CustomButton>
           <CustomButtonText>LOGIN</CustomButtonText>
