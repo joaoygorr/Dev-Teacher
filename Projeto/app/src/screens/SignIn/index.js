@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {
   Container,
   InputArea,
@@ -8,40 +8,54 @@ import {
   SignMessageButton,
   SignMessageButtonTextBold,
   SignMessageButtonText,
-} from "./styles";
-import { Image } from "react-native";
+} from './styles';
+import {Image, ToastAndroid} from 'react-native';
+// API
+import Api from '../../Api.js';
+
 // Components
-import SignInput from "../../components/SignInput/SignInput";
+import SignInput from '../../components/SignInput/SignInput';
 
 // Image
-import TeacherLogo from "../../assets/teacher.png";
+import TeacherLogo from '../../assets/teacher.png';
 
 // Icons
-import EmailIcon from "../../assets/email.svg";
-import LockIcon from "../../assets/lock.svg";
+import EmailIcon from '../../assets/email.svg';
+import LockIcon from '../../assets/lock.svg';
 
 export default () => {
   const navigation = useNavigation();
 
-  const [emailField, setEmailField] = useState("");
-  const [passwordField, setPasswordField] = useState("");
+  const [emailField, setEmailField] = useState('');
+  const [passwordField, setPasswordField] = useState('');
 
-  const handleSignClick = () => {};
+  const handleSignClick = async () => {
+    if (emailField != '' && passwordField != '') {
+      let json = await Api.signIn(emailField, passwordField);
+      if (json.token) {
+        alert('as');
+      } else {
+        alert('Incorrect email and/or password');
+      }
+    } else {
+      alert('Fill in all fields');
+    }
+  };
 
   const handleMessageButtonClick = () => {
-    navigation.reset({ routes: [{ name: "SignUp" }] });
+    navigation.reset({routes: [{name: 'SignUp'}]});
   };
 
   return (
     <Container>
-      <Image source={TeacherLogo} style={{ width: "50%", height: 180 }} />
+      <Image source={TeacherLogo} style={{width: '50%', height: 180}} />
 
       <InputArea>
         <SignInput
           IconSvg={EmailIcon}
           placeholder="Enter your email"
           value={emailField}
-          onChangeText={(t) => setEmailField(t)}
+          onChangeText={t => setEmailField(t)}
         />
 
         <SignInput
@@ -49,7 +63,7 @@ export default () => {
           placeholder="Type your password"
           value={passwordField}
           password={true}
-          onChangeText={(t) => setPasswordField(t)}
+          onChangeText={t => setPasswordField(t)}
         />
 
         <CustomButton onPress={handleSignClick}>
