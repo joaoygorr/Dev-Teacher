@@ -6,7 +6,7 @@ import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 
 // Stacks
-import MainTab from './MainTab';
+import MainTab from './MainTab.js';
 
 const Stack = createStackNavigator();
 

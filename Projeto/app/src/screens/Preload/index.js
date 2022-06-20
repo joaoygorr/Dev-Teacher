@@ -6,7 +6,7 @@ import {UserContext} from '../../contexts/UserContext';
 import {Image} from 'react-native';
 
 // API
-import Api from '../../Api.js';
+import Api from '../../Api';
 
 // Logo
 import TeacherLogo from '../../assets/teacher.png';
@@ -18,11 +18,12 @@ export default () => {
   useEffect(() => {
     const checkToken = async () => {
       const token = await AsyncStorage.getItem('token');
-      if (token !== null) {
+      if (token) {
         // validar o token
         let res = await Api.checkToken(token);
         if (res.token) {
           await AsyncStorage.setItem('token', res.token);
+
           userDispatch({
             type: 'setAvatar',
             payload: {

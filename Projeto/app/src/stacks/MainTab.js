@@ -2,11 +2,11 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Screens
-import Home from '../screens/Home/index';
-import Search from '../screens/Search/index';
-import Appointments from '../screens/Appointments/index';
-import Favorites from '../screens/Favorites/index';
-import Profile from '../screens/Profile/index';
+import Home from '../screens/Home';
+import Search from '../screens/Search';
+import Appointments from '../screens/Appointments';
+import Favorites from '../screens/Favorites';
+import Profile from '../screens/Profile';
 
 const Tab = createBottomTabNavigator();
 
