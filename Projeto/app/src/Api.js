@@ -4,11 +4,11 @@ export default {
   checkToken: async () => {
     const req = await fetch(`${BASE_API}/auth/refresh`, {
       method: 'POST',
-      header: {
+      headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({email, password}),
+      body: JSON.stringify({token}),
     });
     const json = await req.json();
     return json;
@@ -16,7 +16,7 @@ export default {
   signIn: async (email, password) => {
     const req = await fetch(`${BASE_API}/auth/login`, {
       method: 'POST',
-      header: {
+      headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
@@ -28,7 +28,7 @@ export default {
   signUp: async (name, email, password) => {
     const req = await fetch(`${BASE_API}/user`, {
       method: 'POST',
-      header: {
+      headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
