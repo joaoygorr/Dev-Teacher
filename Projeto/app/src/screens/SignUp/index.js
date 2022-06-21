@@ -40,6 +40,7 @@ export default () => {
 
       if (res.token) {
         await AsyncStorage.setItem('token', res.token);
+
         userDispatch({
           type: 'setAvatar',
           payload: {
@@ -51,7 +52,7 @@ export default () => {
           routes: [{name: 'MainTab'}],
         });
       } else {
-        alert('Error: ' + res.error);
+        alert('Erro: ' + res.error);
       }
     } else {
       alert('Fill in all fields');
@@ -59,7 +60,9 @@ export default () => {
   };
 
   const handleMessageButtonClick = () => {
-    navigation.reset({routes: [{name: 'SignIn'}]});
+    navigation.reset({
+      routes: [{name: 'SignIn'}],
+    });
   };
 
   return (

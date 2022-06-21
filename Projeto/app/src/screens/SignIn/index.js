@@ -27,7 +27,6 @@ import LockIcon from '../../assets/lock.svg';
 
 export default () => {
   const {dispatch: userDispatch} = useContext(UserContext);
-
   const navigation = useNavigation();
 
   const [emailField, setEmailField] = useState('');
@@ -39,6 +38,7 @@ export default () => {
 
       if (json.token) {
         await AsyncStorage.setItem('token', json.token);
+
         userDispatch({
           type: 'setAvatar',
           payload: {
@@ -58,7 +58,9 @@ export default () => {
   };
 
   const handleMessageButtonClick = () => {
-    navigation.reset({routes: [{name: 'SignUp'}]});
+    navigation.reset({
+      routes: [{name: 'SignUp'}],
+    });
   };
 
   return (
