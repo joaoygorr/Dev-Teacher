@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import {UserContext} from '../../contexts/UserContext';
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   SignMessageButtonTextBold,
   SignMessageButtonText,
 } from './styles';
-import {Image, ToastAndroid} from 'react-native';
+import {Image} from 'react-native';
 // API
 import Api from '../../Api.js';
 
@@ -34,10 +34,9 @@ export default () => {
 
   const handleSignClick = async () => {
     if (emailField != '' && passwordField != '') {
-      let json = await Api.signIn(emailField, passwordField);
-
+      let json = await Api.signIn(emailField.trim(), passwordField.trim());
       if (json.token) {
-        await AsyncStorage.setItem('token', json.token);
+        // await AsyncStorage.setItem('token', json.token);
 
         userDispatch({
           type: 'setAvatar',
@@ -45,7 +44,6 @@ export default () => {
             avatar: json.data.avatar,
           },
         });
-
         navigation.reset({
           routes: [{name: 'MainTab'}],
         });
