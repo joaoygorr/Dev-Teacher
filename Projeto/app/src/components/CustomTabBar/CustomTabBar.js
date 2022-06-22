@@ -10,11 +10,11 @@ import {
 } from './CustomTabBar.style';
 
 // Icons
-import HomeIcon from '../assets/home.svg';
-import SearchIcon from '../assets/search.svg';
-import TodayIcon from '../assets/today.svg';
-import FavoriteIcon from '../assets/favorite.svg';
-import AccountIcon from '../assets/account.svg';
+import HomeIcon from '../../assets/home.svg';
+import SearchIcon from '../../assets/search.svg';
+import TodayIcon from '../../assets/today.svg';
+import FavoriteIcon from '../../assets/favorite.svg';
+import AccountIcon from '../../assets/account.svg';
 
 export default ({state, navigation}) => {
   const {state: user} = useContext(UserContext);

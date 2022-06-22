@@ -133,7 +133,7 @@ export default () => {
 
           {userInfo.services && (
             <ServiceArea>
-              <ServicesTitle>Lista de serviços</ServicesTitle>
+              <ServicesTitle>List of services</ServicesTitle>
 
               {userInfo.services.map((item, key) => (
                 <ServiceItem key={key}>
@@ -142,7 +142,7 @@ export default () => {
                     <ServicePrice>R$ {item.price.toFixed(2)}</ServicePrice>
                   </ServiceInfo>
                   <ServiceChooseButton onPress={() => handleServiceChoose(key)}>
-                    <ServiceChooseBtnText>Agendar</ServiceChooseBtnText>
+                    <ServiceChooseBtnText>To schedule</ServiceChooseBtnText>
                   </ServiceChooseButton>
                 </ServiceItem>
               ))}

@@ -42,7 +42,7 @@ export default () => {
 
   return (
     <Container>
-      <Image source={TeacherLogo} style={{width: '100%', height: 350}} />
+      <Image source={TeacherLogo} style={{width: '50%', height: 250}} />
       <LoadingIcon size="large" color="#FFFFFF" />
     </Container>
   );

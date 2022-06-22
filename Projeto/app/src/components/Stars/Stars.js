@@ -4,9 +4,9 @@ import React from 'react';
 import {StarArea, StarText, StarView} from './Stars.style';
 
 // Icons
-import StarFull from '../assets/star.svg';
-import StarHalf from '../assets/star_half.svg';
-import StarEmpty from '../assets/star_empty.svg';
+import StarFull from '../../assets/star.svg';
+import StarHalf from '../../assets/star_half.svg';
+import StarEmpty from '../../assets/star_empty.svg';
 
 export default ({stars, showNumber}) => {
   let s = [0, 0, 0, 0, 0];

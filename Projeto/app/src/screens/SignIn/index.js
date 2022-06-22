@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {Image} from 'react-native';
 import {UserContext} from '../../contexts/UserContext';
 
 import {
@@ -16,7 +16,7 @@ import {
 
 import Api from '../../Api';
 
-import SignInput from '../../components/SignInput';
+import SignInput from '../../components/SignInput/SignInput';
 
 import TeacherLogo from '../../assets/teacher.png';
 import EmailIcon from '../../assets/email.svg';
@@ -47,10 +47,10 @@ export default () => {
           routes: [{name: 'MainTab'}],
         });
       } else {
-        alert('E-mail e/ou senha errados!');
+        alert('Wrong email and/or password!');
       }
     } else {
-      alert('Preencha os campos!');
+      alert('Fill in the fields!');
     }
   };
 
@@ -62,19 +62,19 @@ export default () => {
 
   return (
     <Container>
-      <Image source={TeacherLogo} style={{width: '100%', height: 350}} />
+      <Image source={TeacherLogo} style={{width: '50%', height: 250}} />
 
       <InputArea>
         <SignInput
           IconSvg={EmailIcon}
-          placeholder="Digite seu e-mail"
+          placeholder="Type your e-mail"
           value={emailField}
           onChangeText={t => setEmailField(t)}
         />
 
         <SignInput
           IconSvg={LockIcon}
-          placeholder="Digite sua senha"
+          placeholder="Type your password"
           value={passwordField}
           onChangeText={t => setPasswordField(t)}
           password={true}
@@ -86,10 +86,8 @@ export default () => {
       </InputArea>
 
       <SignMessageButton onPress={handleMessageButtonClick}>
-        <SignMessageButtonText>
-          Ainda não possui uma conta?
-        </SignMessageButtonText>
-        <SignMessageButtonTextBold>Cadastre-se</SignMessageButtonTextBold>
+        <SignMessageButtonText>Already have an account?</SignMessageButtonText>
+        <SignMessageButtonTextBold>Register</SignMessageButtonTextBold>
       </SignMessageButton>
     </Container>
   );

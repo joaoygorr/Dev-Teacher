@@ -11,7 +11,7 @@ import {
   UserName,
 } from './BarberItem.style';
 
-import Stars from '../Stars';
+import Stars from '../Stars/Stars';
 
 export default ({data}) => {
   const navigation = useNavigation();
@@ -34,7 +34,7 @@ export default ({data}) => {
         <Stars stars={data.stars} showNumber={true} />
 
         <SeeProfileButton>
-          <SeeProfileButtonText>Ver Perfil</SeeProfileButtonText>
+          <SeeProfileButtonText>View profile</SeeProfileButtonText>
         </SeeProfileButton>
       </InfoArea>
     </Area>

@@ -19,7 +19,7 @@ import {
   ListArea,
 } from './styles';
 
-import BarberItem from '../../components/BarberItem';
+import BarberItem from '../../components/BarberItem/BarberItem';
 
 import SearchIcon from '../../assets/search.svg';
 import MyLocationIcon from '../../assets/my_location.svg';
@@ -98,7 +98,7 @@ export default () => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
         <HeaderArea>
-          <HeaderTitle numberOfLines={2}>Encontre o seu professor</HeaderTitle>
+          <HeaderTitle numberOfLines={2}>Find your teacher</HeaderTitle>
           <SearchButton onPress={() => navigation.navigate('Search')}>
             <SearchIcon width="26" height="26" fill="#FFFFFF" />
           </SearchButton>
@@ -106,7 +106,7 @@ export default () => {
 
         <LocationArea>
           <LocationInput
-            placeholder="Onde você está?"
+            placeholder="Where are you?"
             placeholderTextColor="#FFFFFF"
             value={locationText}
             onChangeText={t => setLocationText(t)}

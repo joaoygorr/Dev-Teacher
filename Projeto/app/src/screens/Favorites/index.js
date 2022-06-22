@@ -1,63 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import { RefreshControl } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {RefreshControl} from 'react-native';
 import {
-    Container,
-    HeaderArea,
-    HeaderTitle,
-    Scroller,
-    LoadingIcon,
-    ListArea,
-    EmptyWarning
+  Container,
+  HeaderArea,
+  HeaderTitle,
+  Scroller,
+  ListArea,
+  EmptyWarning,
 } from './styles';
 
-import BarberItem from '../../components/BarberItem';
+import BarberItem from '../../components/BarberItem/BarberItem';
 import Api from '../../Api';
 
 export default () => {
+  const [loading, setLoading] = useState(false);
+  const [list, setList] = useState([]);
 
-    const [loading, setLoading] = useState(false);
-    const [list, setList] = useState([]);
+  useEffect(() => {
+    getFavorites();
+  }, []);
 
-    useEffect(()=>{
-        getFavorites();
-    }, []);
+  const getFavorites = async () => {
+    setLoading(true);
+    setList([]);
 
-    const getFavorites = async () => {
-        setLoading(true);
-        setList([]);
-
-        let res = await Api.getFavorites();
-        if(res.error == '') {
-            setList(res.list);
-        } else {
-            alert("Erro: "+res.error);
-        }
-
-        setLoading(false);
+    let res = await Api.getFavorites();
+    if (res.error == '') {
+      setList(res.list);
+    } else {
+      alert('Erro: ' + res.error);
     }
 
-    return (
-        <Container>
-            
-            <HeaderArea>
-                <HeaderTitle>Favoritos</HeaderTitle>
-            </HeaderArea>
+    setLoading(false);
+  };
 
-            <Scroller refreshControl={
-                <RefreshControl refreshing={loading} onRefresh={getFavorites} />
-            }>
+  return (
+    <Container>
+      <HeaderArea>
+        <HeaderTitle>Favoritos</HeaderTitle>
+      </HeaderArea>
 
-                {!loading && list.length === 0 &&
-                    <EmptyWarning>Não há favoritos.</EmptyWarning>
-                }
+      <Scroller
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={getFavorites} />
+        }>
+        {!loading && list.length === 0 && (
+          <EmptyWarning>There are no favorites.</EmptyWarning>
+        )}
 
-                <ListArea>
-                    {list.map((item, k)=>(
-                        <BarberItem key={k} data={item} />
-                    ))}
-                </ListArea>
-            </Scroller>
-
-        </Container>
-    );
-}
+        <ListArea>
+          {list.map((item, k) => (
+            <BarberItem key={k} data={item} />
+          ))}
+        </ListArea>
+      </Scroller>
+    </Container>
+  );
+};

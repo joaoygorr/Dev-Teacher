@@ -9,7 +9,7 @@ import {
   EmptyWarning,
 } from './styles';
 
-import BarberItem from '../../components/BarberItem';
+import BarberItem from '../../components/BarberItem/BarberItem';
 import Api from '../../Api';
 
 export default () => {
@@ -43,7 +43,7 @@ export default () => {
     <Container>
       <SearchArea>
         <SearchInput
-          placeholder="Digite o nome do professor(a)"
+          placeholder="Enter the teacher's name"
           placeholderTextColor="#FFFFFF"
           value={searchText}
           onChangeText={t => setSearchText(t)}
@@ -59,7 +59,7 @@ export default () => {
 
         {emptyList && (
           <EmptyWarning>
-            Não achamos professores com o nome "{searchText}"
+            We couldn't find any teachers with the name "{searchText}"
           </EmptyWarning>
         )}
 

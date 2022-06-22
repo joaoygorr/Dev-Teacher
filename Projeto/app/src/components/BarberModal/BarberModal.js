@@ -265,7 +265,7 @@ export default ({show, setShow, user, service}) => {
           )}
 
           <FinishButton onPress={handleFinishClick}>
-            <FinishButtonText>Finalizar Agendamento</FinishButtonText>
+            <FinishButtonText>Finalize Scheduling</FinishButtonText>
           </FinishButton>
         </ModalBody>
       </ModalArea>
