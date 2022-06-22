@@ -1,27 +1,24 @@
 import React, {useState, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {UserContext} from '../../contexts/UserContext';
+
 import {
   Container,
   InputArea,
   CustomButton,
   CustomButtonText,
   SignMessageButton,
-  SignMessageButtonTextBold,
   SignMessageButtonText,
+  SignMessageButtonTextBold,
 } from './styles';
-import {Image} from 'react-native';
-// API
-import Api from '../../Api.js';
 
-// Components
-import SignInput from '../../components/SignInput/SignInput';
+import Api from '../../Api';
 
-// Image
+import SignInput from '../../components/SignInput';
+
 import TeacherLogo from '../../assets/teacher.png';
-
-// Icons
 import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
 
@@ -34,9 +31,10 @@ export default () => {
 
   const handleSignClick = async () => {
     if (emailField != '' && passwordField != '') {
-      let json = await Api.signIn(emailField.trim(), passwordField.trim());
+      let json = await Api.signIn(emailField, passwordField);
+
       if (json.token) {
-        // await AsyncStorage.setItem('token', json.token);
+        await AsyncStorage.setItem('token', json.token);
 
         userDispatch({
           type: 'setAvatar',
@@ -44,14 +42,15 @@ export default () => {
             avatar: json.data.avatar,
           },
         });
+
         navigation.reset({
           routes: [{name: 'MainTab'}],
         });
       } else {
-        alert('Incorrect email and/or password');
+        alert('E-mail e/ou senha errados!');
       }
     } else {
-      alert('Fill in all fields');
+      alert('Preencha os campos!');
     }
   };
 
@@ -63,22 +62,22 @@ export default () => {
 
   return (
     <Container>
-      <Image source={TeacherLogo} style={{width: '50%', height: 180}} />
+      <Image source={TeacherLogo} style={{width: '100%', height: 350}} />
 
       <InputArea>
         <SignInput
           IconSvg={EmailIcon}
-          placeholder="Enter your email"
+          placeholder="Digite seu e-mail"
           value={emailField}
           onChangeText={t => setEmailField(t)}
         />
 
         <SignInput
           IconSvg={LockIcon}
-          placeholder="Type your password"
+          placeholder="Digite sua senha"
           value={passwordField}
-          password={true}
           onChangeText={t => setPasswordField(t)}
+          password={true}
         />
 
         <CustomButton onPress={handleSignClick}>
@@ -88,9 +87,9 @@ export default () => {
 
       <SignMessageButton onPress={handleMessageButtonClick}>
         <SignMessageButtonText>
-          Don't have an account yet?
+          Ainda não possui uma conta?
         </SignMessageButtonText>
-        <SignMessageButtonTextBold>Register</SignMessageButtonTextBold>
+        <SignMessageButtonTextBold>Cadastre-se</SignMessageButtonTextBold>
       </SignMessageButton>
     </Container>
   );

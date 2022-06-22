@@ -1,6 +1,7 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {UserContext} from '../../contexts/UserContext';
 import {
   Container,
@@ -8,23 +9,18 @@ import {
   CustomButton,
   CustomButtonText,
   SignMessageButton,
-  SignMessageButtonTextBold,
   SignMessageButtonText,
+  SignMessageButtonTextBold,
 } from './styles';
-import {Image} from 'react-native';
-// API
-import Api from '../../Api.js';
 
-// Components
-import SignInput from '../../components/SignInput/SignInput';
+import SignInput from '../../components/SignInput';
 
-// Image
+import Api from '../../Api';
+
 import TeacherLogo from '../../assets/teacher.png';
-
-// Icons
+import PersonIcon from '../../assets/person.svg';
 import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
-import PersonIcon from '../../assets/person.svg';
 
 export default () => {
   const {dispatch: userDispatch} = useContext(UserContext);
@@ -55,7 +51,7 @@ export default () => {
         alert('Erro: ' + res.error);
       }
     } else {
-      alert('Fill in all fields');
+      alert('Preencha os campos');
     }
   };
 
@@ -67,39 +63,39 @@ export default () => {
 
   return (
     <Container>
-      <Image source={TeacherLogo} style={{width: '50%', height: 180}} />
+      <Image source={TeacherLogo} style={{width: '100%', height: 350}} />
 
       <InputArea>
         <SignInput
           IconSvg={PersonIcon}
-          placeholder="Enter your name"
+          placeholder="Digite seu nome"
           value={nameField}
           onChangeText={t => setNameField(t)}
         />
 
         <SignInput
           IconSvg={EmailIcon}
-          placeholder="Enter your email"
+          placeholder="Digite seu e-mail"
           value={emailField}
           onChangeText={t => setEmailField(t)}
         />
 
         <SignInput
           IconSvg={LockIcon}
-          placeholder="Type your password"
+          placeholder="Digite sua senha"
           value={passwordField}
-          password={true}
           onChangeText={t => setPasswordField(t)}
+          password={true}
         />
 
         <CustomButton onPress={handleSignClick}>
-          <CustomButtonText>Register</CustomButtonText>
+          <CustomButtonText>CADASTRAR</CustomButtonText>
         </CustomButton>
       </InputArea>
 
       <SignMessageButton onPress={handleMessageButtonClick}>
-        <SignMessageButtonText>already have an account?</SignMessageButtonText>
-        <SignMessageButtonTextBold>Login</SignMessageButtonTextBold>
+        <SignMessageButtonText>Já possui uma conta?</SignMessageButtonText>
+        <SignMessageButtonTextBold>Faça Login</SignMessageButtonTextBold>
       </SignMessageButton>
     </Container>
   );

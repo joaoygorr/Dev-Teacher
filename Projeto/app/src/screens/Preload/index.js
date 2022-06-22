@@ -2,13 +2,10 @@ import React, {useEffect, useContext} from 'react';
 import {Container, LoadingIcon} from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
-import {UserContext} from '../../contexts/UserContext';
 import {Image} from 'react-native';
-
-// API
+import {UserContext} from '../../contexts/UserContext';
 import Api from '../../Api';
 
-// Logo
 import TeacherLogo from '../../assets/teacher.png';
 
 export default () => {
