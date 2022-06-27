@@ -185,7 +185,7 @@ export default ({show, setShow, user, service}) => {
           {service != null && (
             <ModalItem>
               <ServiceInfo>
-                <ServiceName>{user.services.name}</ServiceName>
+                <ServiceName>Lógica de Programação</ServiceName>
                 <ServicePrice>
                   R$ {user.services[service].price.toFixed(2)}
                 </ServicePrice>

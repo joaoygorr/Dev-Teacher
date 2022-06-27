@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Swiper from 'react-native-swiper';
-
+import {Image} from 'react-native';
 // Components
 import Stars from '../../components/Stars/Stars';
 import BarberModal from '../../components/BarberModal/BarberModal';
@@ -20,11 +20,6 @@ import {
   PageBody,
   BackButton,
   LoadingIcon,
-  SwipeDot,
-  SwipeDotActive,
-  SwipeItem,
-  SwipeImage,
-  FakeSwiper,
   UserInfoArea,
   UserAvatar,
   UserInfo,
@@ -47,10 +42,18 @@ import {
 
 // API
 import Api from '../../Api';
+import Image1 from '../../assets/1.jpg';
 
 export default () => {
   const navigation = useNavigation();
   const route = useRoute();
+
+  const lista = [
+    'Lógica de Programação',
+    'Mysql',
+    'Programação Orientada a Objetos',
+    'Programação Web',
+  ];
 
   const [userInfo, setUserInfo] = useState({
     id: route.params.id,
@@ -97,22 +100,8 @@ export default () => {
   return (
     <Container>
       <Scroller>
-        {userInfo.photos && userInfo.photos.length > 0 ? (
-          <Swiper
-            style={{height: 240}}
-            dot={<SwipeDot />}
-            activeDot={<SwipeDotActive />}
-            paginationStyle={{top: 15, right: 15, bottom: null, left: null}}
-            autoplay={true}>
-            {userInfo.photos.map((item, key) => (
-              <SwipeItem key={key}>
-                <SwipeImage source={{uri: item.url}} resizeMode="cover" />
-              </SwipeItem>
-            ))}
-          </Swiper>
-        ) : (
-          <FakeSwiper></FakeSwiper>
-        )}
+        <Image source={Image1} style={{width: '100%', height: 250}} />
+
         <PageBody>
           <UserInfoArea>
             <UserAvatar source={{uri: userInfo.avatar}} />
@@ -134,11 +123,10 @@ export default () => {
           {userInfo.services && (
             <ServiceArea>
               <ServicesTitle>List of services</ServicesTitle>
-
               {userInfo.services.map((item, key) => (
                 <ServiceItem key={key}>
                   <ServiceInfo>
-                    <ServiceName>opa</ServiceName>
+                    <ServiceName>{lista[key]}</ServiceName>
                     <ServicePrice>R$ {item.price.toFixed(2)}</ServicePrice>
                   </ServiceInfo>
                   <ServiceChooseButton onPress={() => handleServiceChoose(key)}>
